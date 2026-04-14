@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin JSON Generator</title>
+<title>News & Blog JSON Generator</title>
 
 <style>
 * {
-  box-sizing: border-box; /* ป้องกัน Input ทะลุขอบหน้าจอ */
+  box-sizing: border-box;
 }
 
 body{
@@ -36,7 +36,7 @@ textarea{
 }
 
 button{
-  width: 100%; /* ให้ปุ่มเต็มจอในมือถือ */
+  width: 100%;
   padding: 15px;
   background: #00bfff;
   color: #000;
@@ -71,7 +71,6 @@ button:hover {
   overflow-x: auto;
 }
 
-/* ทำให้รูปใน Preview ไม่ล้นหน้าจอ */
 #preview img {
   max-width: 100%;
   height: auto;
@@ -105,14 +104,13 @@ button:hover {
   font-size: 13px;
 }
 
-/* 📱 Responsive สำหรับมือถือ */
 @media (max-width: 768px) {
   .guide-container {
-    flex-direction: column; /* เรียง Guide เป็นแนวตั้ง */
+    flex-direction: column;
   }
 
   button {
-    font-size: 18px; /* ปรับปุ่มให้กดง่ายขึ้น */
+    font-size: 18px;
   }
 
   h2 {
