@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin JSON Generator</title>
+
+<style>
+* {
+  box-sizing: border-box; /* ป้องกัน Input ทะลุขอบหน้าจอ */
+}
+
+body{
+  font-family: Arial, sans-serif;
+  padding: 15px;
+  background: #111;
+  color: #fff;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+input, textarea{
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+textarea{
+  height: 150px;
+  resize: vertical;
+}
+
+button{
+  width: 100%; /* ให้ปุ่มเต็มจอในมือถือ */
+  padding: 15px;
+  background: #00bfff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0099cc;
+}
+
+#output{
+  margin-top: 20px;
+  background: #000;
+  padding: 15px;
+  white-space: pre-wrap;
+  border: 1px solid #333;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+#preview{
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #333;
+  overflow-x: auto;
+}
+
+/* ทำให้รูปใน Preview ไม่ล้นหน้าจอ */
+#preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+.guide-container{
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.guide-box{
+  flex: 1;
+  background: #1a1a1a;
+  padding: 15px;
+  border: 1px solid #333;
+  border-radius: 4px;
+}
+
+.guide-box h4{
+  margin-top: 0;
+  color: #00bfff;
+  border-bottom: 1px solid #333;
+  padding-bottom: 5px;
+}
+
+.guide-box pre{
+  background: #000;
+  padding: 10px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+
+/* 📱 Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+  .guide-container {
+    flex-direction: column; /* เรียง Guide เป็นแนวตั้ง */
+  }
+
+  button {
+    font-size: 18px; /* ปรับปุ่มให้กดง่ายขึ้น */
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<h2>News JSON Generator</h2>
+
+<input id="id" type="number" placeholder="ID (e.g. 2)">
+<input id="title" placeholder="Title">
+<input id="desc" placeholder="Description">
+<input id="img" placeholder="Image path (URL)">
+
+<textarea id="content" placeholder="Write HTML here..."></textarea>
+
+<button onclick="generate()">Generate & Copy JSON</button>
+
+<h3>🔍 Preview</h3>
+<div id="preview"></div>
+
+<h3>📦 JSON Output</h3>
+<pre id="output"></pre>
+
+<hr>
+
+<h3>📘 HTML Guide</h3>
+<div class="guide-container">
+  <div class="guide-box">
+    <h4>🔤 Text & Headings</h4>
+    <pre>&lt;h1&gt;Title&lt;/h1&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;
+&lt;hr&gt;</pre>
+  </div>
+
+  <div class="guide-box">
+    <h4>✨ Style & Links</h4>
+    <pre>&lt;strong&gt;Bold&lt;/strong&gt;
+&lt;mark&gt;Highlight&lt;/mark&gt;
+&lt;a href="#"&gt;Link&lt;/a&gt;</pre>
+  </div>
+
+  <div class="guide-box">
+    <h4>🖼 Media</h4>
+    <pre>&lt;img src="..."&gt;
+&lt;ul&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</pre>
+  </div>
+</div>
+
+<script>
+const contentInput = document.getElementById("content");
+const preview = document.getElementById("preview");
+
+// Live preview
+contentInput.addEventListener("input", () => {
+  preview.innerHTML = contentInput.value;
+});
+
+// Generate JSON
+function generate(){
+  let id = document.getElementById("id").value;
+  let title = document.getElementById("title").value;
+  let desc = document.getElementById("desc").value;
+  let img = document.getElementById("img").value;
+  let content = contentInput.value;
+
+  // Escape quotes and remove new lines
+  let safeContent = content
+    .replace(/\n/g, "")
+    .replace(/\r/g, "")
+    .replace(/"/g, '\\"');
+
+  let safeDesc = desc.replace(/"/g, '\\"');
+
+  const date = new Date().toISOString().split("T")[0];
+
+  const json = `{
+  "id": "${id}",
+  "title": "${title}",
+  "desc": "${safeDesc}",
+  "content": "${safeContent}",
+  "img": "${img}",
+  "date": "${date}"
+},`;
+
+  document.getElementById("output").textContent = json;
+
+  // Copy to clipboard
+  navigator.clipboard.writeText(json).then(() => {
+    alert("JSON Copied to clipboard!");
+  });
+}
+</script>
+
+</body>
+</html>
