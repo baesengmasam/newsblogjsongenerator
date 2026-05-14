@@ -120,6 +120,42 @@ button{
 }
 button#addSpot { background: #00ff99; color: #111; font-weight: bold; }
 button:hover { opacity: 0.8; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  thead tr {
+    background-color: #00ff99;
+    color: #111111;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #333;
+  }
+  
+  tbody tr:nth-of-type(even) {
+    background-color: #222222;
+  }
+  
+  tbody tr:hover {
+    background-color: #333333;
+  }
+
+  .feature-col {
+    font-weight: bold;
+    color: #00ff99;
+    width: 20%;
+  }
 </style>
 </head>
 <body>
@@ -145,6 +181,50 @@ button:hover { opacity: 0.8; }
   <textarea id="cssOutput" readonly></textarea>
   <button onclick="copyCode('cssOutput')">Copy CSS</button>
 </div>
+
+<h2>Comparison: CSS Hotspots vs. HTML Image Map</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>CSS Hotspots (Modern)</th>
+      <th>HTML Image Map (Legacy)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="feature-col">Responsiveness</td>
+      <td>Excellent. Uses % units to scale perfectly with the image.</td>
+      <td>Poor. Uses fixed pixels which break when the image is resized.</td>
+    </tr>
+    <tr>
+      <td class="feature-col">Styling</td>
+      <td>Unlimited. Support for borders, shadows, and opacity.</td>
+      <td>Very Limited. Usually invisible or hard to style.</td>
+    </tr>
+    <tr>
+      <td class="feature-col">Animations</td>
+      <td>Supported. Easy to add hover effects or pulse animations.</td>
+      <td>Not Supported. Requires external JavaScript libraries.</td>
+    </tr>
+    <tr>
+      <td class="feature-col">Ease of Use</td>
+      <td>High. Can be edited visually or by changing CSS values.</td>
+      <td>Low. Requires recalculating pixel coordinates manually.</td>
+    </tr>
+    <tr>
+      <td class="feature-col">Shape Support</td>
+      <td>Rectangles and Circles (easy). Polygons (requires Clip-path).</td>
+      <td>Native support for Rectangles, Circles, and Polygons.</td>
+    </tr>
+    <tr>
+      <td class="feature-col">Modern Standards</td>
+      <td>Industry standard for modern web design.</td>
+      <td>Considered outdated for responsive layouts.</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>
 This tool is a modern, visual alternative to the traditional HTML Image Map. While old-school image maps rely on fixed pixel coordinates that break when an image is resized, this editor uses <b>Percentage-based (%) positioning</b>. This ensures that your interactive spots remain perfectly aligned with the image on any device, from mobile phones to 4K monitors.
