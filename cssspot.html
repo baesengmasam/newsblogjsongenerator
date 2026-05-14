@@ -146,6 +146,53 @@ button:hover { opacity: 0.8; }
   <button onclick="copyCode('cssOutput')">Copy CSS</button>
 </div>
 
+<p>
+This tool is a modern, visual alternative to the traditional HTML Image Map. While old-school image maps rely on fixed pixel coordinates that break when an image is resized, this editor uses <b>Percentage-based (%) positioning</b>. This ensures that your interactive spots remain perfectly aligned with the image on any device, from mobile phones to 4K monitors.
+</p>
+<h2>What is it?</h2>
+<p>
+It is a "What You See Is What You Get" (WYSIWYG) editor for creating clickable areas on images. It generates clean HTML and CSS that you can easily plug into any website to create interactive menus, infographics, or navigation portals.
+</p>
+<h2>Key Features</h2>
+<p>
+<b>1. Fluid Responsiveness:</b> Every spot is calculated as a percentage of the image's width and height. If the image shrinks, the spot shrinks with it.
+</p>
+<p>
+<b>2. Visual Control:</b> Drag to move and pull corners to resize. You don't need to guess coordinates or write code manually.
+</p>
+<p>
+<b>3. Integrated Link Management:</b> Assign URLs directly to each spot within the editor interface.
+</p>
+<p>
+<b>4. Instant Code Export:</b> Copy-paste ready HTML and CSS that works in all modern browsers.
+</p>
+<h2>How to Use</h2>
+<h2>Step 1: Upload Your Image</h2>
+<p>
+Click the <b>"Choose File"</b> button to upload the background image you want to make interactive. The image will appear in the workspace below.
+</p>
+<h2>Step 2: Add and Position Spots</h2>
+<p>
+Click <b>"+ Add Spot"</b> to create a new interactive area.
+<b>To Move:</b> Click and drag the green box to your desired location.
+<b>To Resize:</b> Click and drag the white handle at the bottom-right corner of the box.
+</p>
+<h2>Step 3: Assign URLs</h2>
+<p>
+Inside each green box, you will see a small black input field. Type the destination <b>URL</b> (e.g., contact.html or https://google.com) into this field. This link will be automatically embedded into the generated HTML code.
+</p>
+<h2>Step 4: Delete Unwanted Spots</h2>
+<p>
+If you make a mistake or want to remove a spot, simply click the <b>red "X" button</b> at the top-right corner of that specific box.
+</p>
+<h2>Step 5: Export the Code</h2>
+<p>
+Scroll down to the <b>"Generated HTML"</b> and <b>"Generated CSS"</b> sections. Click the <b>"Copy Code"</b> buttons to copy the snippets. Paste the HTML into your body tag and the CSS into your stylesheet.
+</p>
+<p>
+<i>Note: In your final project, make sure to update the src attribute of the <img> tag in the HTML code to point to your actual image file path.</i>
+</p>
+
 <script>
 const upload = document.getElementById("upload");
 const portalImg = document.getElementById("portalImg");
