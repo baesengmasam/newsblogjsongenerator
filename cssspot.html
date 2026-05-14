@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML CSS Spot Generator</title>
+<title>HTML CSS Spot Generator - Pro</title>
 
 <style>
 body{
@@ -16,44 +16,72 @@ body{
   line-height:1.6;
 }
 
-h1{
-  margin-top:0;
-}
+h1{ margin-top:0; display: inline-block; }
+.sub-nav { float: right; color: #aaa; text-decoration: none; }
 
-hr{
-  border:none;
-  border-top:1px solid #333;
-  margin:30px 0;
-}
+hr{ border:none; border-top:1px solid #333; margin:30px 0; }
 
-.controls{
-  margin-bottom:20px;
-}
+.controls{ margin-bottom:20px; background: #222; padding: 15px; border-radius: 8px; }
 
 .portal-wrap{
   position:relative;
   display:inline-block;
   width:min(95vw,1000px);
   border:2px solid #444;
-  overflow:hidden;
+  overflow:visible; /* ปรับเป็น visible เพื่อให้เห็นปุ่มลบที่ล้นออกมา */
   touch-action:none;
+  background: #000;
 }
 
 .portal-img{
   display:block;
   width:100%;
   height:auto;
-  min-height: 200px; 
+  min-height: 200px;
   background: #222;
 }
 
 .spot{
   position:absolute;
-  border:2px solid red;
-  background:rgba(255,0,0,0.25);
+  border:2px solid #00ff99;
+  background:rgba(0, 255, 153, 0.2);
   cursor:move;
   box-sizing:border-box;
   touch-action:none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+/* ปุ่มลบ */
+.delete-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 22px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid white;
+  font-size: 14px;
+}
+
+/* ช่องกรอก URL บนตัว Spot */
+.url-input {
+  width: 100%;
+  font-size: 10px;
+  background: rgba(0,0,0,0.7);
+  color: #00ff99;
+  border: 1px solid #444;
+  border-radius: 3px;
+  padding: 2px;
+  pointer-events: auto; /* ให้คลิกพิมพ์ได้ */
 }
 
 .resize-handle{
@@ -67,13 +95,11 @@ hr{
   cursor:nwse-resize;
 }
 
-.output{
-  margin-top:20px;
-}
+.output{ margin-top:20px; }
 
 textarea{
   width:100%;
-  height:220px;
+  height:180px;
   background:#1b1b1b;
   color:#00ff99;
   border:1px solid #444;
@@ -87,16 +113,23 @@ button{
   margin-top:10px;
   padding:10px 16px;
   cursor:pointer;
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
+button#addSpot { background: #00ff99; color: #111; font-weight: bold; }
+button:hover { opacity: 0.8; }
 </style>
 </head>
 <body>
 
-<h1>HTML CSS Spot Generator</h1><a href="index.html" style="text-align:right"><h2>News JSON generator</h2></a>
+<h1>HTML CSS Spot Generator</h1>
+<a href="index.html" class="sub-nav">News JSON generator</a>
 
 <div class="controls">
   <input type="file" id="upload" accept="image/*">
-  <button id="addSpot">Add Spot</button>
+  <button id="addSpot">+ Add Spot</button>
 </div>
 
 <div class="portal-wrap" id="portalWrap">
@@ -113,19 +146,11 @@ button{
   <button onclick="copyCode('cssOutput')">Copy CSS</button>
 </div>
 
-<br><br>
-<h1>What is HTML CSS Spot Generator?</h1>
-<p>
-A simple visual hotspot editor for creating responsive image navigation using HTML and CSS.
-</p>
-<hr>
-
 <script>
 const upload = document.getElementById("upload");
 const portalImg = document.getElementById("portalImg");
 const portalWrap = document.getElementById("portalWrap");
 const addSpotBtn = document.getElementById("addSpot");
-
 const htmlOutput = document.getElementById("htmlOutput");
 const cssOutput = document.getElementById("cssOutput");
 
@@ -134,102 +159,117 @@ let spots = [];
 upload.addEventListener("change", e => {
   const file = e.target.files[0];
   if(!file) return;
-
   const reader = new FileReader();
-  reader.onload = event => {
-    portalImg.src = event.target.result;
-  };
+  reader.onload = event => { portalImg.src = event.target.result; };
   reader.readAsDataURL(file);
 });
 
 addSpotBtn.addEventListener("click", () => {
-  createSpot(5, 5, 15, 15);
+  createSpot(10, 10, 15, 10);
 });
 
 function createSpot(pctX, pctY, pctW, pctH){
-  const spot = document.createElement("a");
+  const spotId = Date.now();
+  const spot = document.createElement("div");
   spot.className = "spot";
+  
+  // ปุ่มลบ
+  const delBtn = document.createElement("div");
+  delBtn.className = "delete-btn";
+  delBtn.innerHTML = "&times;";
+  delBtn.onclick = (e) => {
+    e.stopPropagation();
+    removeSpot(spotId);
+  };
 
+  // ช่องกรอก URL
+  const input = document.createElement("input");
+  input.className = "url-input";
+  input.placeholder = "URL (e.g. /home)";
+  input.value = "#";
+  input.oninput = () => generateCode();
+  input.onpointerdown = (e) => e.stopPropagation(); // กันลากตอนจะจิ้มพิมพ์
+
+  // Resize handle
   const handle = document.createElement("div");
   handle.className = "resize-handle";
 
+  spot.appendChild(delBtn);
+  spot.appendChild(input);
   spot.appendChild(handle);
   portalWrap.appendChild(spot);
 
   const data = {
+    id: spotId,
     element: spot,
+    input: input,
     pctX, pctY, pctW, pctH
   };
 
   spots.push(data);
-  updateSpot(data);
-
+  updateSpotUI(data);
   makeDraggable(data);
   makeResizable(data, handle);
   generateCode();
 }
 
-function updateSpot(data){
+function removeSpot(id) {
+  const index = spots.findIndex(s => s.id === id);
+  if (index !== -1) {
+    spots[index].element.remove();
+    spots.splice(index, 1);
+    generateCode();
+  }
+}
+
+function updateSpotUI(data){
   data.element.style.left = data.pctX + "%";
   data.element.style.top = data.pctY + "%";
   data.element.style.width = data.pctW + "%";
   data.element.style.height = data.pctH + "%";
-
   generateCode();
 }
 
 function makeDraggable(data){
   let dragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
+  let offsetX = 0, offsetY = 0;
 
   data.element.addEventListener("pointerdown", e => {
-    if(e.target.classList.contains("resize-handle")) return;
+    if(e.target.className === "resize-handle" || e.target.className === "url-input") return;
     dragging = true;
-    
-    const spotRect = data.element.getBoundingClientRect();
-    offsetX = e.clientX - spotRect.left;
-    offsetY = e.clientY - spotRect.top;
-    
+    const rect = data.element.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
     data.element.setPointerCapture(e.pointerId);
   });
 
   data.element.addEventListener("pointermove", e => {
     if(!dragging) return;
-
     const rect = portalWrap.getBoundingClientRect();
-    const imgW = portalImg.clientWidth;
-    const imgH = portalImg.clientHeight;
+    const imgW = portalImg.clientWidth, imgH = portalImg.clientHeight;
 
-    let newPxX = e.clientX - rect.left - offsetX;
-    let newPxY = e.clientY - rect.top - offsetY;
+    let pxX = e.clientX - rect.left - offsetX;
+    let pxY = e.clientY - rect.top - offsetY;
 
-    const currentPxW = (data.pctW / 100) * imgW;
-    const currentPxH = (data.pctH / 100) * imgH;
+    const curPxW = (data.pctW / 100) * imgW;
+    const curPxH = (data.pctH / 100) * imgH;
 
-    newPxX = Math.max(0, Math.min(newPxX, imgW - currentPxW));
-    newPxY = Math.max(0, Math.min(newPxY, imgH - currentPxH));
+    pxX = Math.max(0, Math.min(pxX, imgW - curPxW));
+    pxY = Math.max(0, Math.min(pxY, imgH - curPxH));
 
-    data.pctX = (newPxX / imgW) * 100;
-    data.pctY = (newPxY / imgH) * 100;
-
-    updateSpot(data);
+    data.pctX = (pxX / imgW) * 100;
+    data.pctY = (pxY / imgH) * 100;
+    updateSpotUI(data);
   });
 
-  const stopDrag = (e) => {
+  data.element.addEventListener("pointerup", (e) => {
     dragging = false;
-    if(data.element.hasPointerCapture(e.pointerId)){
-      data.element.releasePointerCapture(e.pointerId);
-    }
-  };
-
-  data.element.addEventListener("pointerup", stopDrag);
-  data.element.addEventListener("pointercancel", stopDrag);
+    data.element.releasePointerCapture(e.pointerId);
+  });
 }
 
 function makeResizable(data, handle){
   let resizing = false;
-
   handle.addEventListener("pointerdown", e => {
     e.stopPropagation();
     resizing = true;
@@ -238,73 +278,48 @@ function makeResizable(data, handle){
 
   handle.addEventListener("pointermove", e => {
     if(!resizing) return;
-
     const rect = portalWrap.getBoundingClientRect();
-    const imgW = portalImg.clientWidth;
-    const imgH = portalImg.clientHeight;
-
+    const imgW = portalImg.clientWidth, imgH = portalImg.clientHeight;
     const startPxX = (data.pctX / 100) * imgW;
     const startPxY = (data.pctY / 100) * imgH;
 
-    let newPxW = e.clientX - rect.left - startPxX;
-    let newPxH = e.clientY - rect.top - startPxY;
+    let pxW = e.clientX - rect.left - startPxX;
+    let pxH = e.clientY - rect.top - startPxY;
 
-    newPxW = Math.max(20, Math.min(newPxW, imgW - startPxX));
-    newPxH = Math.max(20, Math.min(newPxH, imgH - startPxY));
+    pxW = Math.max(30, Math.min(pxW, imgW - startPxX));
+    pxH = Math.max(30, Math.min(pxH, imgH - startPxY));
 
-    data.pctW = (newPxW / imgW) * 100;
-    data.pctH = (newPxH / imgH) * 100;
-
-    updateSpot(data);
+    data.pctW = (pxW / imgW) * 100;
+    data.pctH = (pxH / imgH) * 100;
+    updateSpotUI(data);
   });
 
-  const stopResize = (e) => {
+  handle.addEventListener("pointerup", (e) => {
     resizing = false;
-    if(handle.hasPointerCapture(e.pointerId)){
-      handle.releasePointerCapture(e.pointerId);
-    }
-  };
-
-  handle.addEventListener("pointerup", stopResize);
-  handle.addEventListener("pointercancel", stopResize);
+    handle.releasePointerCapture(e.pointerId);
+  });
 }
 
 function generateCode(){
-  let html = `<div class="portal-wrap">\n\n`;
-  html += `  <img src="portal.png" alt="menu" class="portal-img">\n\n`;
+  let html = `<div class="portal-wrap">\n`;
+  html += `  <img src="your-image.jpg" alt="navigation" class="portal-img">\n`;
 
-  spots.forEach((spot, index) => {
-    const top = spot.pctY.toFixed(1);
-    const left = spot.pctX.toFixed(1);
-    const width = spot.pctW.toFixed(1);
-    const height = spot.pctH.toFixed(1);
+  spots.forEach((spot) => {
+    const t = spot.pctY.toFixed(1), l = spot.pctX.toFixed(1);
+    const w = spot.pctW.toFixed(1), h = spot.pctH.toFixed(1);
+    const url = spot.input.value || "#";
 
-    html += `  <a href="/link${index+1}"\n`;
-    html += `     class="spot"\n`;
-    html += `     style="top:${top}%; left:${left}%; width:${width}%; height:${height}%;">\n`;
-    html += `  </a>\n\n`;
+    html += `  <a href="${url}" class="spot" style="top:${t}%; left:${l}%; width:${w}%; height:${h}%;"></a>\n`;
   });
 
   html += `</div>`;
   htmlOutput.value = html;
 
   cssOutput.value = 
-`.portal-wrap{
-  position:relative;
-  display:inline-block;
-  width:100%;
-  max-width:800px;
-}
-
-.portal-img{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-.spot{
-  position:absolute;
-}`;
+`.portal-wrap { position: relative; display: inline-block; width: 100%; }
+.portal-img { display: block; width: 100%; height: auto; }
+.spot { position: absolute; border: 1px solid transparent; transition: background 0.3s; }
+.spot:hover { background: rgba(255, 255, 255, 0.2); border-color: white; }`;
 }
 
 function copyCode(id){
