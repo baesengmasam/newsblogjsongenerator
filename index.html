@@ -234,6 +234,7 @@ Text
 <script>
 const preview = document.getElementById("preview");
 const output = document.getElementById("output");
+
 const contentInput = document.getElementById("content");
 
 const typeInput = document.getElementById("type");
@@ -246,120 +247,270 @@ const linksInput = document.getElementById("links");
 
 let all = [];
 
+
+// default content
 contentInput.value =
 `<h2>Heading</h2>
 <p>Write content here...</p>`;
 
-preview.innerHTML = contentInput.value;
+preview.innerHTML = sanitizeHTML(contentInput.value);
 
-contentInput.addEventListener("input", () => {
-  preview.innerHTML = sanitizeHTML(contentInput.value);
+
+// auto slug
+titleInput.addEventListener("input", ()=>{
+
+  slugInput.value =
+    titleInput.value
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g,"")
+      .replace(/\s+/g,"-");
+
 });
 
+
+// live preview
+contentInput.addEventListener("input", ()=>{
+
+  preview.innerHTML =
+    sanitizeHTML(contentInput.value);
+
+});
+
+
+// sanitize html
 function sanitizeHTML(html){
-  return html.replace(
-    /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
-    ""
-  );
+
+  return html
+
+    // remove script tags
+    .replace(
+      /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
+      ""
+    )
+
+    // remove onclick="" etc
+    .replace(
+      /on\w+="[^"]*"/g,
+      ""
+    )
+
+    // remove javascript:
+    .replace(
+      /javascript:/gi,
+      ""
+    );
+
 }
 
+
+// safe json
 function escapeJSON(str){
+
   return str
     .replace(/\\/g,'\\\\')
     .replace(/"/g,'\\"')
     .replace(/\n/g,'')
     .replace(/\r/g,'');
+
 }
 
+
+// validate url
+function safeURL(url){
+
+  return (
+    url.startsWith("https://")
+    || url.startsWith("http://")
+  );
+
+}
+
+
+// parse links
 function parseLinks(str){
 
   if(!str.trim()) return [];
 
-  return str.split(",").map(link => {
+  return str
+    .split(",")
+    .map(link => {
 
-    const parts = link.split("|");
+      const parts = link.split("|");
 
-    return {
-      label: parts[0]?.trim() || "",
-      url: parts[1]?.trim() || ""
-    };
+      const label =
+        parts[0]?.trim() || "";
 
-  });
+      const url =
+        parts[1]?.trim() || "";
+
+      return {
+
+        label: escapeJSON(label),
+
+        url: safeURL(url)
+          ? url
+          : ""
+
+      };
+
+    })
+
+    // remove invalid links
+    .filter(link => link.url !== "");
 
 }
 
+
+// generate json
 function generate(){
 
-  const type = typeInput.value;
-  const id = idInput.value;
-  const slug = slugInput.value;
-  const title = titleInput.value;
-  const desc = descInput.value;
-  const img = imgInput.value;
-  const content = contentInput.value;
-  const links = parseLinks(linksInput.value);
+  const type =
+    typeInput.value;
+
+  const id =
+    idInput.value;
+
+  const slug =
+    slugInput.value;
+
+  const title =
+    titleInput.value;
+
+  const desc =
+    descInput.value;
+
+  const img =
+    imgInput.value;
+
+  const content =
+    sanitizeHTML(contentInput.value);
+
+  const links =
+    parseLinks(linksInput.value);
+
 
   if(!id || !title){
+
     alert("Fill ID and Title");
+
     return;
+
   }
 
+
   const data = {
-    id: Number(id),
-    type: type,
-    slug: slug,
 
-    title: escapeJSON(title),
-    desc: escapeJSON(desc),
+    schema:
+      "post-content-v1",
 
-    img: img,
+    id:
+      Number(id),
 
-    content: {
-      type: "html",
-      data: escapeJSON(content)
+    type:
+      type,
+
+    slug:
+      escapeJSON(slug),
+
+    title:
+      escapeJSON(title),
+
+    desc:
+      escapeJSON(desc),
+
+    img:
+      img,
+
+    content:{
+
+      type:"html",
+
+      data:
+        escapeJSON(content)
+
     },
 
-    links: links,
+    links:
+      links,
 
-    date: new Date()
-      .toISOString()
-      .split("T")[0]
+    date:
+      new Date()
+        .toISOString()
+        .split("T")[0]
+
   };
 
+
   all.push(data);
+
 
   output.textContent =
     JSON.stringify(all, null, 2);
 
 }
 
+
+// download json
 function downloadJSON(){
 
   if(all.length === 0){
+
     alert("No JSON data");
+
     return;
+
   }
 
+
   const blob = new Blob(
-    [JSON.stringify(all, null, 2)],
-    {type:"application/json"}
+
+    [
+      JSON.stringify(all, null, 2)
+    ],
+
+    {
+      type:"application/json"
+    }
+
   );
 
-  const a = document.createElement("a");
 
-  a.href = URL.createObjectURL(blob);
+  const a =
+    document.createElement("a");
 
-  a.download = "content.json";
+
+  a.href =
+    URL.createObjectURL(blob);
+
+  a.download =
+    "content.json";
 
   a.click();
 
 }
 
+
+// clear all
 function clearAll(){
 
   all = [];
 
   output.textContent = "";
+
+  idInput.value = "";
+  slugInput.value = "";
+  titleInput.value = "";
+  descInput.value = "";
+  imgInput.value = "";
+  linksInput.value = "";
+
+  contentInput.value =
+`<h2>Heading</h2>
+<p>Write content here...</p>`;
+
+  preview.innerHTML =
+    sanitizeHTML(contentInput.value);
 
 }
 </script>
