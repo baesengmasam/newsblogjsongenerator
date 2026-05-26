@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>News & Blog JSON Generator</title>
+
+<title>Post JSON Content Generator</title>
 
 <style>
-*{box-sizing:border-box;}
+*{
+  box-sizing:border-box;
+}
 
 body{
   font-family:Arial,sans-serif;
@@ -15,10 +18,10 @@ body{
   color:#fff;
   line-height:1.6;
   max-width:1200px;
-  margin:0 auto;
+  margin:auto;
 }
 
-input,textarea{
+input,textarea,select{
   width:100%;
   margin:8px 0;
   padding:12px;
@@ -29,34 +32,29 @@ input,textarea{
 }
 
 textarea{
-  height:150px;
+  height:180px;
   resize:vertical;
 }
 
 button{
   width:100%;
   padding:15px;
+  margin-top:10px;
   background:#00bfff;
   color:#000;
-  font-weight:bold;
   border:none;
-  cursor:pointer;
   border-radius:6px;
-  font-size:16px;
-  margin-top:10px;
+  font-weight:bold;
+  cursor:pointer;
   transition:0.2s;
 }
 
-button:hover{background:#0099cc;}
-button:active{transform:scale(0.97);}
+button:hover{
+  background:#0099cc;
+}
 
-#output{
-  margin-top:20px;
-  background:#000;
-  padding:15px;
-  border:1px solid #333;
-  font-family:monospace;
-  word-break:break-all;
+button:active{
+  transform:scale(0.97);
 }
 
 #preview{
@@ -71,10 +69,20 @@ button:active{transform:scale(0.97);}
   max-width:100%;
 }
 
+#output{
+  margin-top:20px;
+  background:#000;
+  padding:15px;
+  border:1px solid #333;
+  font-family:monospace;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
 .guide-container{
   display:flex;
   gap:15px;
-  margin-top:10px;
+  margin-top:20px;
 }
 
 .guide-box{
@@ -87,31 +95,64 @@ button:active{transform:scale(0.97);}
 
 .guide-box h4{
   color:#00bfff;
-  border-bottom:1px solid #333;
 }
 
 .guide-box pre{
   background:#000;
   padding:10px;
+  overflow:auto;
   font-size:13px;
 }
 
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.topbar a{
+  color:#00bfff;
+  text-decoration:none;
+}
+
 @media(max-width:768px){
-  .guide-container{flex-direction:column;}
+  .guide-container{
+    flex-direction:column;
+  }
 }
 </style>
 
 </head>
 <body>
 
-<h2>News JSON Generator</h2> <a href="cssspot.html" style="text-align:right"><h2>Image CSS spot editor</h2></a>
+<div class="topbar">
+  <h2>Universal JSON Content Generator</h2>
+
+  <a href="cssspot.html">
+    Image CSS Spot Editor
+  </a>
+</div>
+
+<select id="type">
+  <option value="news">News</option>
+  <option value="blog">Blog</option>
+  <option value="event">Event</option>
+  <option value="gallery">Gallery</option>
+  <option value="wiki">Wiki</option>
+  <option value="project">Project</option>
+</select>
 
 <input id="id" type="number" placeholder="ID">
+<input id="slug" placeholder="Slug (example-post)">
 <input id="title" placeholder="Title">
 <input id="desc" placeholder="Description">
 <input id="img" placeholder="Image URL">
 
 <textarea id="content"></textarea>
+
+<input id="links" placeholder='Links example: Website|https://web.com, YouTube|https://youtube.com'>
 
 <button onclick="generate()">➕ Add JSON</button>
 <button onclick="downloadJSON()">⬇ Download JSON</button>
@@ -129,58 +170,99 @@ button:active{transform:scale(0.97);}
 
 <div class="guide-box">
 <h4>Text</h4>
-<pre>&lt;p&gt;text&lt;/p&gt;
+
+<pre>
+&lt;p&gt;text&lt;/p&gt;
 &lt;br&gt;
-&lt;hr&gt;</pre>
+&lt;hr&gt;
+</pre>
 
 <h4>Heading</h4>
-<pre>&lt;h1&gt;&lt;/h1&gt;
-&lt;h2&gt;&lt;/h2&gt;</pre>
+
+<pre>
+&lt;h1&gt;&lt;/h1&gt;
+&lt;h2&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;/h3&gt;
+</pre>
 </div>
 
 <div class="guide-box">
 <h4>Style</h4>
-<pre>&lt;strong&gt;&lt;/strong&gt;
+
+<pre>
+&lt;strong&gt;&lt;/strong&gt;
 &lt;em&gt;&lt;/em&gt;
-&lt;u&gt;&lt;/u&gt;</pre>
+&lt;u&gt;&lt;/u&gt;
+&lt;mark&gt;&lt;/mark&gt;
+</pre>
 
 <h4>List</h4>
-<pre>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</pre>
+
+<pre>
+&lt;ul&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
 </div>
 
 <div class="guide-box">
-<h4>Link</h4>
-<pre>&lt;a href=""&gt;&lt;/a&gt;</pre>
+<h4>Media</h4>
 
-<h4>Image</h4>
-<pre>&lt;img src=""&gt;</pre>
+<pre>
+&lt;img src=""&gt;
+
+&lt;a href=""&gt;
+Link
+&lt;/a&gt;
+</pre>
+
+<h4>Indent</h4>
+
+<pre>
+&lt;blockquote&gt;
+Text
+&lt;/blockquote&gt;
+</pre>
 </div>
 
 </div>
 
 <script>
-const contentInput = document.getElementById("content");
 const preview = document.getElementById("preview");
 const output = document.getElementById("output");
+const contentInput = document.getElementById("content");
 
+const typeInput = document.getElementById("type");
 const idInput = document.getElementById("id");
+const slugInput = document.getElementById("slug");
 const titleInput = document.getElementById("title");
 const descInput = document.getElementById("desc");
 const imgInput = document.getElementById("img");
+const linksInput = document.getElementById("links");
 
 let all = [];
 
-// default template
-contentInput.value = "<h2>Title</h2><p>Write here...</p>";
+contentInput.value =
+`<h2>Heading</h2>
+<p>Write content here...</p>`;
+
 preview.innerHTML = contentInput.value;
 
-// safe preview
 contentInput.addEventListener("input", () => {
-  preview.innerHTML = contentInput.value
-    .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "");
+  preview.innerHTML = sanitizeHTML(contentInput.value);
 });
 
-// escape JSON
+function sanitizeHTML(html){
+  return html.replace(
+    /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
+    ""
+  );
+}
+
 function escapeJSON(str){
   return str
     .replace(/\\/g,'\\\\')
@@ -189,55 +271,96 @@ function escapeJSON(str){
     .replace(/\r/g,'');
 }
 
-// generate
+function parseLinks(str){
+
+  if(!str.trim()) return [];
+
+  return str.split(",").map(link => {
+
+    const parts = link.split("|");
+
+    return {
+      label: parts[0]?.trim() || "",
+      url: parts[1]?.trim() || ""
+    };
+
+  });
+
+}
+
 function generate(){
-  let id = idInput.value;
-  let title = titleInput.value;
-  let desc = descInput.value;
-  let img = imgInput.value;
-  let content = contentInput.value;
+
+  const type = typeInput.value;
+  const id = idInput.value;
+  const slug = slugInput.value;
+  const title = titleInput.value;
+  const desc = descInput.value;
+  const img = imgInput.value;
+  const content = contentInput.value;
+  const links = parseLinks(linksInput.value);
 
   if(!id || !title){
-    alert("Fill ID & Title");
+    alert("Fill ID and Title");
     return;
   }
 
   const data = {
-    id: id,
+    id: Number(id),
+    type: type,
+    slug: slug,
+
     title: escapeJSON(title),
     desc: escapeJSON(desc),
-    content: escapeJSON(content),
+
     img: img,
-    date: new Date().toISOString().split("T")[0]
+
+    content: {
+      type: "html",
+      data: escapeJSON(content)
+    },
+
+    links: links,
+
+    date: new Date()
+      .toISOString()
+      .split("T")[0]
   };
 
   all.push(data);
 
-  output.textContent = JSON.stringify(all, null, 2);
+  output.textContent =
+    JSON.stringify(all, null, 2);
+
 }
 
-// download
 function downloadJSON(){
+
   if(all.length === 0){
-    alert("No data");
+    alert("No JSON data");
     return;
   }
 
   const blob = new Blob(
-    [JSON.stringify(all,null,2)],
+    [JSON.stringify(all, null, 2)],
     {type:"application/json"}
   );
 
   const a = document.createElement("a");
+
   a.href = URL.createObjectURL(blob);
-  a.download = "data.json";
+
+  a.download = "content.json";
+
   a.click();
+
 }
 
-// clear
 function clearAll(){
+
   all = [];
+
   output.textContent = "";
+
 }
 </script>
 
