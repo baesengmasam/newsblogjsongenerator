@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>เว็บไซต์ข่าวสาร Long-form</title>
+    <style>
+    /* ตั้งค่าให้หน้าจอแสดงผลเต็มความสูง */
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: sans-serif;
+    }
+
+    #cssportal-grid {
+        display: grid;
+        grid-template-rows: 80px 1fr 80px;
+        grid-template-columns: 25% 1fr; /* ปรับโครงสร้างเป็น 2 คอลัมน์เพื่อให้เหมาะกับข่าว Long-form */
+        gap: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    #header {
+        grid-area: 1 / 1 / 2 / 3;
+        background-color: rgba(39, 161, 240, 0.5);
+        padding: 10px;
+    }
+    #sideL {
+        grid-area: 2 / 1 / 3 / 2;
+        background-color: rgba(147, 19, 209, 0.5);
+        padding: 20px;
+        overflow-y: auto;
+    }
+    #main {
+        grid-area: 2 / 2 / 3 / 3;
+        padding: 40px;
+        overflow-y: auto; /* เพื่อให้เลื่อนอ่านบทความยาวๆ ได้ */
+    }
+    #footer {
+        grid-area: 3 / 1 / 4 / 3;
+        background-color: rgba(47, 221, 20, 0.5);
+        padding: 10px;
+    }
+    </style>
+</head>
+<body>
+
+<div id="cssportal-grid">
+    <div id="header">
+        <h1>สำนักข่าว THE LONG-FORM TIMES</h1>
+    </div>
+    
+    <div id="sideL">
+        <h3>เกี่ยวกับบทความนี้</h3>
+        <p><strong>ผู้เขียน:</strong> สมชาย รักเรียน</p>
+        <p><strong>วันที่เผยแพร่:</strong> 31 พฤษภาคม 2026</p>
+        <p><strong>เวลาในการอ่าน:</strong> 15 นาที</p>
+        <hr>
+        <h4>สารบัญเนื้อหา</h4>
+        <ul>
+            <li><a href="#section1">บทนำ: จุดเริ่มต้นของวิกฤต</a></li>
+            <li><a href="#section2">เจาะลึกข้อมูลและผลกระทบ</a></li>
+            <li><a href="#section3">ทางออกและการรับมือในอนาคต</a></li>
+        </ul>
+    </div>
+    
+    <div id="main">
+        <article>
+            <h2>วิกฤตการณ์การเปลี่ยนแปลงสภาพภูมิอากาศกับอนาคตของเกษตรกรรมไทย</h2>
+            <p class="lead"><em>บทความเชิงลึกที่จะพาไปสำรวจผลกระทบของเอลนีโญและลานีญาที่ส่งผลต่อความมั่นคงทางอาหารในเอเชียตะวันออกเฉียงใต้</em></p>
+            
+            <hr>
+
+            <section id="section1">
+                <h3>บทนำ: จุดเริ่มต้นของวิกฤต</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>ในปัจจุบัน ประเทศไทยกำลังเผชิญกับความท้าทายครั้งใหญ่จากสภาพอากาศที่แปรปรวน เกษตรกรในพื้นที่ภาคกลางเริ่มประสบปัญหาขาดแคลนน้ำอย่างรุนแรง ซึ่งส่งผลกระทบโดยตรงต่อผลผลิตข้าวนาปรัง...</p>
+            </section>
+
+            <section id="section2">
+                <h3>เจาะลึกข้อมูลและผลกระทบ</h3>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <blockquote>
+                    "ถ้าภายในสามเดือนนี้ฝนยังไม่ตกตามฤดูกาล ผลผลิตข้าวในปีนี้อาจจะลดลงมากกว่า 30%" — ตัวแทนเกษตรกรรายหนึ่งกล่าว
+                </blockquote>
+                <p>จากสถิติย้อนหลัง 10 ปีพบว่า อุณหภูมิเฉลี่ยในพื้นที่เพาะปลูกหลักเพิ่มสูงขึ้นอย่างต่อเนื่อง ส่งผลให้หน้าดินสูญเสียความชุ่มชื้นรวดเร็วขึ้น การจัดการน้ำในเขื่อนจึงต้องรัดกุมมากกว่าเดิมหลายเท่าตัว...</p>
+            </section>
+
+            <section id="section3">
+                <h3>ทางออกและการรับมือในอนาคต</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>แนวทางการแก้ไขที่ยั่งยืนคือการเปลี่ยนผ่านไปสู่ "เกษตรกรรมแม่นยำสูง" (Precision Agriculture) โดยการนำเทคโนโลยีเซนเซอร์ตรวจวัดความชื้นในดินและระบบ AI มาช่วยคำนวณการจ่ายน้ำ รวมถึงการพัฒนาสายพันธุ์พืชที่ทนแล้งได้ดีขึ้น...</p>
+            </section>
+        </article>
+    </div>
+    
+    <div id="footer">
+        <p>© 2026 THE LONG-FORM TIMES. All rights reserved.</p>
+    </div>
+</div>
+
+</body>
+</html>
