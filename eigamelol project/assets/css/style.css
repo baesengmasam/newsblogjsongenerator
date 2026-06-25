@@ -1,0 +1,246 @@
+body {
+    max-width: 850px;
+    margin: 0 auto;
+    font-family: "Arial", sans-serif;
+    font-size: 18px;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+/* HEADER */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    position: relative;
+}
+
+.logo {
+    flex-shrink: 0;
+    order: 1;
+}
+
+.header-middle {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+}
+
+.menu-row {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.nav-menu a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+    color: #555;
+}
+
+.welcome-row {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 4px solid red;
+    padding-top: 6px;
+}
+
+.welcome-title {
+    margin: 0;
+    color: blue;
+    font-size: 2.5rem;
+    font-style: italic;
+    text-align: right;
+    line-height: 1.1;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 3px solid #000;
+    flex-shrink: 0;
+    order: 3;
+}
+
+.mobile-red-line {
+    display: none;
+}
+
+@media (max-width: 870px) {
+    .site-header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo hamburger"
+            "line line"
+            "welcome avatar";
+        gap: 0.1px 15px;
+        align-items: start;
+        position: relative;
+    }
+
+    .header-middle {
+        display: contents;
+    }
+
+    .logo {
+        grid-area: logo;
+        width: 130px;
+        height: auto;
+        justify-self: start;
+        position: static;
+        margin: 0;
+    }
+
+    .menu-row {
+        grid-area: hamburger;
+        justify-self: end;
+        padding-bottom: 0;
+        position: static;
+        margin: 0;
+    }
+
+    .hamburger {
+        display: block;
+        font-size: 26px;
+        line-height: 1;
+    }
+
+    .site-header::after {
+        content: "";
+        grid-area: line;
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: red;
+        margin-top: 2px;
+    }
+
+    .welcome-row {
+        grid-area: welcome;
+        border-top: none;
+        padding-top: 0;
+        justify-self: start;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+        text-align: left;
+        margin: 0;
+        line-height: 2;
+    }
+
+    .avatar {
+        grid-area: avatar;
+        width: 55px;
+        height: 55px;
+        justify-self: end;
+        margin: 0;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background-color: white;
+        border: 2px solid #ddd;
+        flex-direction: column;
+        gap: 0;
+        width: 160px;
+        z-index: 9999;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        padding: 12px 15px;
+        font-size: large;
+        border-bottom: 1px solid #eee;
+        display: block;
+        text-align: left;
+    }
+    .nav-menu a:last-child {
+        border-bottom: none;
+    }
+}
+
+/* ARTICLE */
+
+article {
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+/* TABLE */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 2px solid black;
+    text-align: left;
+    padding: 5px;
+}
+
+/* FOOTER */
+
+footer {
+    padding-top: 10px;
+    text-align: center;
+    color: gray;
+}
+
+footer a {
+    color: gray;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+footer input {
+    width: 58%;
+    height: 30px;
+    font-size: medium;
+}
+
+@media (max-width: 520px) {
+    footer {
+        font-size: 90%;
+    }
+}
