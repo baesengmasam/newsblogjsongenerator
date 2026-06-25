@@ -1,0 +1,347 @@
+[
+  {
+    "schema": "post-content-v1",
+    "id": 23,
+    "type": "news",
+    "slug": "system-test-23",
+    "title": "System Integration Test Success",
+    "desc": "Finalizing the endpoint validation with the 23rd mock post item.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>All systems operational. The development team has successfully conducted a rigorous system integration test covering all microservices, API layers, and front-end state management components. This 23rd mock post item confirms that data pipelines are functioning efficiently, database query execution times are well within normal thresholds, and data serialization protocols align perfectly with the target platform schema. Security protocols, token handshakes, and response integrity metrics have also been verified under high-load simulations to guarantee standard service delivery in production environments.</p>"
+    },
+    "links": [],
+    "date": "2026-06-24"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 22,
+    "type": "news",
+    "slug": "ui-refreshed-v2",
+    "title": "UI Refreshed for Better Navigation",
+    "desc": "We have updated the navigation bar and footer for smoother browsing.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Enjoy the cleaner look and faster load times. In our continuous effort to enhance user experience, we have overhauled the core layout components. The navigation bar now utilizes modern flexbox distribution with optimized hitboxes, providing full responsive support down to extra-small displays. Additionally, the footer area has been restructured into an organized data-grid configuration, housing relevant links, legal documentation, and accessibility settings. We minimized the overall DOM footprint of these layout blocks, which has directly led to faster page rendering and significantly decreased Cumulative Layout Shift (CLS) on mobile devices.</p>"
+    },
+    "links": [],
+    "date": "2026-06-24"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 21,
+    "type": "news",
+    "slug": "performance-optimization-patch",
+    "title": "Performance Optimization Patch",
+    "desc": "Asset loading speeds have been improved across all series pages.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Images are now lazily loaded to save bandwidth. This performance patch introduces native lazy loading mechanisms via the HTML <code>loading=\"lazy\"</code> attribute alongside an intersection observer API fallback for older environments. Large visual assets and series banners will only load as they approach the user's viewable viewport. This technical shift reduces initial payload size by over 45%, resulting in accelerated Time to Interactive (TTI) metrics, lower cellular data consumption for mobile users, and lessened resource contention during peak user interaction phases.</p>"
+    },
+    "links": [],
+    "date": "2026-06-23"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 20,
+    "type": "news",
+    "slug": "community-fanart-showcase",
+    "title": "Community Fanart Showcase Coming Soon",
+    "desc": "We are planning a dedicated space to feature your amazing artwork!",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Stay tuned for submission guidelines next week. To celebrate the incredible creativity of our community members, we are building an integrated community showcase module directly on the website. This space will function as a curated gallery highlighting user-submitted illustrations, character concept designs, and creative re-imaginations of our series universe. The backend will implement secure content delivery upload workflows, automated image optimization variants, and strict content moderation guidelines to ensure a safe, engaging, and high-quality artistic environment for fans of all ages.</p>"
+    },
+    "links": [],
+    "date": "2026-06-23"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 19,
+    "type": "news",
+    "slug": "character-lore-update-3",
+    "title": "Character Lore Update: Part 3",
+    "desc": "Deep dive into the backstories of our supporting cast members.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>New character profiles have been added to the Wiki section. This extensive third narrative expansion unlocks historical files and psychological profiles for the primary supporting ensemble. Read about their early lives, motivation factors, hidden agendas, and intricate interpersonal relationship webs. These data nodes bridge small lore gaps introduced in recent chapters, giving narrative enthusiasts the context needed to piece together overarching universe mysteries. Each entry contains canonical timeline charts, regional origin breakdowns, and text transcripts of key interactions within the series.</p>"
+    },
+    "links": [],
+    "date": "2026-06-22"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 18,
+    "type": "news",
+    "slug": "behind-the-scenes-audio",
+    "title": "Behind the Scenes: Sound Design",
+    "desc": "A quick look into how we create the sound effects for our series.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>We use high-quality synthesizers and field recordings. Auditory immersion remains a cornerstone of our media projects. In this workflow overview, our sound engineering team details the layering processes used to engineer specific ambient noises and specialized acoustic effects. By combining granular synthesis parameters with real-world foley field recordings captured in acoustic environments, we build soundscapes tailored to each virtual location. This update outlines our hardware synthesizer signal paths, digital audio workstation (DAW) configuration methods, and sample normalization standards.</p>"
+    },
+    "links": [],
+    "date": "2026-06-22"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 17,
+    "type": "news",
+    "slug": "summer-event-teaser",
+    "title": "Summer Event Teaser",
+    "desc": "Get ready for a special interactive event dropping this July!",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Exclusive rewards and fun trivia await all participants. Prepare your digital survival kits for our massive upcoming mid-year interactive module! The development department is implementing a server-side state engine that allows visitors to engage in localized trivia paths, track riddle progression, and earn digital profile badges directly on our platform. Participation data will unlock global community progression bars, giving everyone a collective goal to strive for. Full unlock schedules, reward tier structures, and technical entry prerequisites will be fully unveiled as July approaches.</p>"
+    },
+    "links": [],
+    "date": "2026-06-22"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 16,
+    "type": "news",
+    "slug": "mobile-view-fixes",
+    "title": "Mobile View Layout Fixes",
+    "desc": "Responsive design tweaks for smaller smartphone screens.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>The layout should now render perfectly on screens under 400px. Device logs highlighted that compact mobile hardware and legacy screen widths experienced rendering anomalies, such as text clipping and unexpected container overflows. We have refactored specific CSS media queries, introducing dynamic viewport units, relative padding behaviors, and updated flex-wrap parameters. These interface adjustments ensure critical textual information and navigation paths scale elegantly without forcing horizontal scrollbars on smaller viewport configurations.</p>"
+    },
+    "links": [],
+    "date": "2026-06-22"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 15,
+    "type": "news",
+    "slug": "episode-5-release-announcement",
+    "title": "Episode 5 Release Date Announced",
+    "desc": "The highly anticipated fifth episode is arriving next month.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Mark your calendars for an epic continuation of the story. Production pipelines are officially entering post-production optimization phases for the next franchise instalment. Episode 5 resolves the intense narrative cliffhangers left unresolved in the previous chapter, elevating structural stakes and unveiling vital lore revelations. Distribution pipelines have been synchronized, and localized text assets are being packaged. Prepare for a comprehensive presentation that features complex visual compositions, enhanced scoring, and pivotal character development milestones.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 14,
+    "type": "news",
+    "slug": "dark-mode-testing",
+    "title": "Dark Mode Beta Testing",
+    "desc": "We are prototyping a dark theme for late-night readers.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Toggle button will be available in the next experimental build. Aiming to reduce visual strain during late-night archival consumption sessions, our designer team is testing a centralized dark mode framework. The prototype introduces custom CSS properties that shift hex value palettes dynamically from bright layouts to low-contrast, deep hue alternatives without requiring full page reloads. We are currently balancing color contrast configurations against official WCAG 2.1 accessibility standards to guarantee full readability across diverse hardware panels.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 13,
+    "type": "news",
+    "slug": "archive-migration-complete",
+    "title": "Old Archive Migration Complete",
+    "desc": "All legacy posts from 2025 have been safely moved to the new database.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>You can view them via the archive dropdown menu. Long-term digital preservation pipelines have executed successfully. Old database entries, technical releases, and chronological logs stretching back across the 2025 production lifecycle have been transferred to our upgraded, indexed relational storage cluster. Stringent data serialization validation routines were applied during data migration to prevent data loss or broken internal routing strings. All historical assets remain access-ready via the interactive archive interface controls.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 12,
+    "type": "news",
+    "slug": "js-frameworks-discussion",
+    "title": "Why We Kept it Vanilla JS",
+    "desc": "A brief tech blog on why we chose standard JavaScript over heavy frameworks.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Keeping it lightweight makes the archive ultra-fast and easy to maintain. In a development landscape saturated with large frontend libraries and deep dependency graphs, we chose to utilize vanilla JavaScript for our site functions. Avoiding external bundlers and runtime abstractions ensures minimal compilation targets and eliminates security vulnerabilities found in third-party dependency chains. Standard DOM APIs offer long-term compatibility, lower memory overhead profiles, and ensure the community interface loads instantly even on legacy computing hardware platforms.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 11,
+    "type": "news",
+    "slug": "hidden-easter-eggs",
+    "title": "Hidden Easter Eggs in the Wiki",
+    "desc": "Can you find all the hidden clickable secrets spread across the site?",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Hint: Look closely at the character profile pictures. To reward thorough exploration within our database system, we have subtly integrated hidden event triggers into several wiki modules. Interacting with precise layout nodes under unique timing conditions or hovering mouse pointers over specific canvas sections will trigger localized system reactions, rare concept illustration pop-ups, and playful system logs. These small interactive rewards showcase interesting development anecdotes and serve as a fun puzzle for analytical readers.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 10,
+    "type": "news",
+    "slug": "rss-feed-setup",
+    "title": "RSS Feed Setup Guidelines",
+    "desc": "Subscribe to our raw feed to get updates directly to your favorite reader.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>The XML feed URL will be published under the links section soon. Decentralized content syndication remains a vital pillar of our data distribution philosophy. We are deploying an automated XML generator script that updates an RSS feed file every time a new database object initializes. This allows community users to subscribe using independent, self-hosted reader client utilities, avoiding reliance on algorithmic timeline hubs or platform-specific notifications to track platform news developments.</p>"
+    },
+    "links": [],
+    "date": "2026-05-15"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 9,
+    "type": "news",
+    "slug": "server-maintenance-notice",
+    "title": "Scheduled Server Maintenance",
+    "desc": "The website will undergo brief maintenance to update backend scripts.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Expected downtime is less than 5 minutes during off-peak hours. Infrastructure engineers will initiate patch deployments targeting host machine scripts, environment variable security, and caching rules. Maintenance actions are timed to execute during low-traffic periods to reduce real-world accessibility friction. Database replication tables will temporarily transition to a secure read-only state while system packages update, stabilizing platform storage health for long-term operations.</p>"
+    },
+    "links": [],
+    "date": "2026-05-10"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 8,
+    "type": "news",
+    "slug": "episode-4-recap",
+    "title": "Episode 4 Post-Release Recap",
+    "desc": "Breaking down the key moments and trivia from our latest episode.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Thanks to everyone who tuned in and shared their theories! Episode 4 sparked fascinating discussions regarding character motivations and lore continuity. This comprehensive breakdown analyzes production methodologies, story boards, and hidden details you may have missed during the initial viewing. We explore the structural significance of the mid-point plot developments, explain artistic color motifs, and answer frequent audience questions gathered from our community discussion boards.</p>"
+    },
+    "links": [],
+    "date": "2026-05-01"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 7,
+    "type": "news",
+    "slug": "css-grid-layouts",
+    "title": "Switching to CSS Grid for Gallery",
+    "desc": "How we improved the multimedia gallery using CSS Grid properties.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Phoenix Code made it seamless to restructure the stylesheet definitions. Reorganizing our heavy multimedia grid required a flexible layout mechanism capable of handling mixed-aspect-ratio images. Moving from traditional float wrappers to a robust CSS Grid container structure allows multi-column layouts to balance dynamically based on screen real estate. Leveraging the precision of the Phoenix Code IDE, style code optimization, row tracking, and layout constraints were updated efficiently without visual rendering regressions.</p>"
+    },
+    "links": [],
+    "date": "2026-04-30"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 6,
+    "type": "news",
+    "slug": "community-milestone",
+    "title": "Celebrating Our First Milestone!",
+    "desc": "Our little community group has officially reached its first growth target.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Thank you for hanging out with us and supporting the projects! Reaching this baseline growth indicator highlights the incredible enthusiasm surrounding our shared universe. What began as a micro-scale creative hub has transformed into a reliable, active space filled with discussions, theories, and ongoing creative collaboration. This milestone drives us to improve platform design, expand interactive wiki modules, and create more high-quality serialized stories for everyone to enjoy.</p>"
+    },
+    "links": [],
+    "date": "2026-04-28"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 5,
+    "type": "news",
+    "slug": "character-lore-update-2",
+    "title": "Character Lore Update: Part 2",
+    "desc": "Unveiling the mystery behind the main protagonist's rival.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Check the wiki page for updated stats and design sketches. This update adds comprehensive documentation regarding the main protagonist's main competitor. Exploring historical context documents, military alignments, and emotional focal points reveals the exact origins of their ideological clash. Alongside structural data metrics, we uploaded raw pencil design sketches and equipment schematics directly to the database, providing rich visual context for design enthusiasts.</p>"
+    },
+    "links": [],
+    "date": "2026-04-26"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 4,
+    "type": "news",
+    "slug": "seamonkey-composer-tips",
+    "title": "Writing HTML with SeaMonkey Composer",
+    "desc": "A quick summary of workflow benefits when drafting clean static pages.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>WYSIWYG tools save a lot of prototyping time before manual code editing. While manual code entry grants full creative freedom, prototyping structural components inside SeaMonkey Composer's WYSIWYG module lets us verify text flows, relative layouts, and nested list setups instantly. This visual validation minimizes initial development errors, helping us quickly export organized markup templates ready for advanced optimizations inside text editors.</p>"
+    },
+    "links": [],
+    "date": "2026-04-25"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 3,
+    "type": "news",
+    "slug": "character-lore-update-1",
+    "title": "Character Lore Update: Part 1",
+    "desc": "The first batch of official character sheets is now live in the database.",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>Discover the official heights, weights, and alignment configurations. The foundation of our database begins with core character reference sheets. This entry documents the physical metrics, behavioral alignments, and equipment loadouts of the primary characters. Accessing these structured values provides solid framework reference data, allowing readers to accurately cross-reference canonical traits as characters navigate complex situations within the series storyline.</p>"
+    },
+    "links": [],
+    "date": "2026-04-22"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 2,
+    "type": "news",
+    "slug": "what-about-this",
+    "title": "What is this website for?",
+    "desc": "for everyone who wants to dive deep into our world, this website was built to keep a cozy archive of all our past work, drop the latest news and press releases, and give you all the juicy details and fun facts about every single episode and series we make!",
+    "img": "",
+    "content": {
+      "type": "html",
+      "data": "<p>That's all dude. This digital space serves as the central repository and archival platform for our entire creative ecosystem. Instead of navigating fractured social timelines or unreliable third-party hosting engines, this portal centralizes everything in a predictable layout. Here, you have complete access to original production logs, comprehensive narrative databases, detailed behind-the-scenes assets, and technical implementation breakdowns. It functions as an uncompromised resource designed to bridge the gap between creative execution and community curiosity, maintaining full historical context for everything we produce.</p>"
+    },
+    "links": [],
+    "date": "2026-06-21"
+  },
+  {
+    "schema": "post-content-v1",
+    "id": 1,
+    "type": "news",
+    "slug": "eigamelols-website",
+    "title": "EIgameLOL's Website",
+    "desc": "ElgameLOL started this website in 2026 to share news, fun, and cool stuff with our community! Stay tuned, because more updates will be posted right here.",
+    "img": "../assets/images/latest.png",
+    "content": {
+      "type": "html",
+      "data": "This website is <strong>Read-only</strong>, so feel free to check out our series wiki, character lore, and other awesome content. Plus, you can look forward to joining some exciting upcoming events! <br><p>For the tech side, I use SeaMonkey Composer to quickly set up the HTML layout, and Phoenix Code to fine-tune the HTML, CSS, and JavaScript for total control over the design and features. Building from scratch ensures that the environment remains independent, free from complex tracking pixels, and completely optimized for archival stability. Every sub-page and data schema has been manually constructed to prioritize content visibility, clean typography, and fast indexation. We invite you to explore the documentation, click around the interactive wiki logs, and monitor this main feed for future production journals and platform optimization notes.</p>"
+    },
+    "links": [],
+    "date": "2026-04-20"
+  }
+]
