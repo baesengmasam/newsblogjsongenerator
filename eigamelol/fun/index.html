@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,
+      initial-scale=1.0" />
+        <title>Fun Stuff - EIgameLOL</title>
+        <meta name="description" content="Some fun stuff of EIgameLOL!" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Fun Stuff - EIgameLOL" />
+        <meta
+            property="og:description"
+            content="Some fun stuff of
+      EIgameLOL!" />
+        <meta property="og:image" content="https://eigamelol.vercel.app/assets/ui/banner.png" />
+        <link rel="icon" href="../assets/ui/favicon.png" />
+        <link rel="stylesheet" href="../assets/css/style.css" />
+        <style>
+            #grid {
+                display: grid;
+                grid-template-columns: repeat(9, 1fr);
+                width: 100%;
+                align-items: center;
+            }
+            #left {
+                grid-area: 1 / 1 / 2 / 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                gap: 40px;
+                justify-self: end;
+            }
+            #right {
+                grid-area: 1 / 8 / 2 / 10;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                gap: 40px;
+                justify-self: start;
+            }
+            #center {
+                grid-area: 1 / 3 / 2 / 8;
+                display: flex;
+                justify-content: center;
+                align-self: center;
+            }
+            #grid img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            @media (max-width: 768px) {
+                #grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 30px 20px;
+                    height: auto;
+                }
+                #center {
+                    grid-column: 1 / 3;
+                    order: 1;
+                    justify-self: center;
+                }
+
+                #left,
+                #right {
+                    display: contents;
+                }
+
+                #grid > a,
+                #left > a,
+                #right > a {
+                    grid-column: span 1;
+                    justify-self: center;
+                    margin: 0 auto;
+                }
+
+                #left > a:nth-child(1) {
+                    order: 2;
+                } /* Infinite scroll */
+                #left > a:nth-child(2) {
+                    order: 3;
+                } /* Feed me! */
+                #right > a:nth-child(1) {
+                    order: 4;
+                } /* Animation process */
+                #right > a:nth-child(2) {
+                    order: 5;
+                } /* Random? */
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <a href="../index.html"> <img src="../assets/ui/logo.png" alt="EIgameLOL" class="logo" width="250" /> </a>
+            <div class="header-middle">
+                <div class="menu-row">
+                    <nav class="nav-menu" id="navMenu">
+                        <a href="../news/index.html">What's New</a>
+                        <a href="../fun/index.html" style="color: blue">Fun Stuff</a>
+                        <a href="../features/index.html">Features</a> <a href="../about/index.html">About</a>
+                        <a href="../info/index.html">Info</a> <a href="../sitemaps.html">Sitemaps</a>
+                    </nav>
+                    <button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">☰</button>
+                    <script src="../assets/js/menu.js"></script>
+                </div>
+                <div class="welcome-row">
+                    <h1 class="welcome-title">Fun Stuff</h1>
+                </div>
+            </div>
+            <img src="../assets/ui/icon3.png" alt="icon" class="avatar" />
+        </header>
+        <br />
+        <main>
+            <div id="grid">
+                <div id="left">
+                    <a href="infinite.html"
+                        ><img src="../assets/ui/fun/is.gif" alt="Infinite scroll" width="211" height="214"
+                    /></a>
+                    <a href="feed.html"
+                        ><img src="../assets/ui/fun/fm.gif" alt="Feed me!" width="211" height="205"
+                    /></a>
+                </div>
+                <div id="right">
+                    <a href="animation.html"
+                        ><img src="../assets/ui/fun/ap.gif" alt="Animation process" width="210" height="215"
+                    /></a>
+                    <a href="random.html"
+                        ><img src="../assets/ui/fun/rd.gif" alt="Random?" width="210" height="204"
+                    /></a>
+                </div>
+                <div id="center">
+                    <a href="gamefacts.html"
+                        ><img
+                            src="../assets/ui/fun/gm.gif"
+                            alt="Fun
+            facts about Game"
+                            width="424"
+                            height="420"
+                    /></a>
+                </div>
+            </div>
+        </main>
+        <br />
+        <hr />
+        <p style="text-align: center">
+            | <a href="infinite.html">Infinite scroll</a> | <a href="feed.html">Feed me!</a> |
+            <a href="gamefacts.html">Fun facts about game</a> | <a href="animation.html">Animation process</a> |
+            <a href="random.html">Random?</a> |<br />
+        </p>
+        <hr />
+        <footer>
+            <form action="search.html" method="get">
+                Search: <input name="q" placeholder="Yippe!!" type="search" />
+                <input value="Go!" style="width: 52px; height: 30px; font-size: medium" type="submit" />
+            </form>
+            <p>
+                | <a href="../index.html">Home</a> | <a href="../news/index.html">What's New</a> |
+                <a href="../fun/index.html">Fun Stuff</a> | <a href="../features/index.html">Features</a> |
+                <a href="../about/index.html">About</a> | <a href="../info/index.html">Info</a> |
+                <a href="../sitemaps.html">Sitemaps</a> |
+            </p>
+            <a href="../info/copyright.html" style="text-decoration: underline">©2026 EIgameLOL</a>
+        </footer>
+    </body>
+</html>
